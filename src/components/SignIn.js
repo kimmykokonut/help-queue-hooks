@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import { auth } from './../firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 function SignIn() {
   const [signUpSuccess, setSignUpSuccess] = useState(null);
   const [signInSuccess, setSignInSuccess] = useState(null);
+  const [signOutSuccess, setSignOutSuccess] = useState(null);
 
   function doSignUp(e) {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      setSignUpSuccess(`You've successfully signed up, ${userCredential.user.email}!`);
-    })
-    .catch((error) => {
-      setSignUpSuccess(`There was an error signing in ${error.message}.`);
-    });
+      .then((userCredential) => {
+        setSignUpSuccess(`You've successfully signed up, ${userCredential.user.email}!`);
+      })
+      .catch((error) => {
+        setSignUpSuccess(`There was an error signing in ${error.message}.`);
+      });
   }
 
   function doSignIn(e) {
@@ -24,13 +25,22 @@ function SignIn() {
     const email = e.target.signinEmail.value;
     const password = e.target.signinPassword.value;
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      setSignInSuccess(`You've successfully signed in as ${userCredential.user.email}!`)
-    })
-    .catch((error) => {
-      setSignInSuccess(`There was an error signing in: ${error.message}`)
-    });
+      .then((userCredential) => {
+        setSignInSuccess(`You've successfully signed in as ${userCredential.user.email}!`)
+      })
+      .catch((error) => {
+        setSignInSuccess(`There was an error signing in: ${error.message}`)
+      });
   }
+  function doSignOut() {
+    signOut(auth)
+      .then(function () {
+        setSignOutSuccess("You have successfully signed out");
+      }).catch(function (error) {
+        setSignOutSuccess(`There was an error signing out: ${error.message}!`)
+      });
+  }
+
 
   return (
     <React.Fragment>
@@ -55,6 +65,11 @@ function SignIn() {
           placeholder='Password' />
         <button type='submit'>Sign in</button>
       </form>
+      <hr />
+      <h1>Sign OUT</h1>
+      {signOutSuccess}
+      <br />
+      <button onClick={doSignOut}>Sign out</button>
     </React.Fragment>
   );
 }
