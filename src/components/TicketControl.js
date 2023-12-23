@@ -7,6 +7,8 @@ import TicketDetail from './TicketDetail';
 import { db, auth } from './../firebase.js';
 import { collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 
+import { formatDistanceToNow } from 'date-fns';
+
 function TicketControl() {
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(false);
   const [mainTicketList, setMainTicketList] = useState([]);
@@ -15,17 +17,38 @@ function TicketControl() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    function updateTicketWaitTime() {
+      const newMainTicketList = mainTicketList.map(ticket => {
+        const newFormattedWaitTime = formatDistanceToNow(ticket.timeOpen);
+        return {...ticket, formattedWaitTime: newFormattedWaitTime};
+      });
+      setMainTicketList(newMainTicketList);
+    }
+    const waitTimeInterval = setInterval(() => 
+    updateTicketWaitTime(),
+    6000
+    );
+    return function cleanup() { //prevents creation of multiple intervals
+      clearInterval(waitTimeInterval);
+    }
+  }, [mainTicketList]) //hook depends on mainticklist state
+
+  useEffect(() => {
     const unSubscribe = onSnapshot( //onsnap listener
       collection(db, "tickets"),
-      (collectionSnapshot) => {
+      (collectionSnapshot) => { //querySnapshot?
         const tickets = [];
-        collectionSnapshot.forEach((doc) => {
+        collectionSnapshot.forEach((doc) => { //querySnapshot?
+          const timeOpen = doc.get('timeOpen', {serverTimestamps: 'estimate'}).toDate();
+          const jsDate = new Date(timeOpen);
           tickets.push({
             //or ... doc.data(), then id prop.
             names: doc.data().names,
             location: doc.data().location,
             issue: doc.data().issue,
-            id: doc.id //this where create ticet id prop and set to f.s. id
+            timeOpen: jsDate,
+            formattedWaitTime: formatDistanceToNow(jsDate),
+            id: doc.id, //this where create ticet id prop and set to f.s. id
           });
         });
         setMainTicketList(tickets);
