@@ -5,7 +5,7 @@ import EditTicketForm from './EditTicketForm';
 import TicketDetail from './TicketDetail';
 
 import { db, auth } from './../firebase.js';
-import { collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, query, orderBy } from 'firebase/firestore';
 
 import { formatDistanceToNow } from 'date-fns';
 
@@ -34,11 +34,16 @@ function TicketControl() {
   }, [mainTicketList]) //hook depends on mainticklist state
 
   useEffect(() => {
-    const unSubscribe = onSnapshot( //onsnap listener
+    const queryByTimeStamp = query(
       collection(db, "tickets"),
-      (collectionSnapshot) => { //querySnapshot?
+      orderBy('timeOpen')
+    );
+    const unSubscribe = onSnapshot( //onsnap listener
+      queryByTimeStamp,
+      // collection(db, "tickets"), this is replaced by queryByTS
+      (querySnapshot) => { //was collectionSnap
         const tickets = [];
-        collectionSnapshot.forEach((doc) => { //querySnapshot?
+        querySnapshot.forEach((doc) => { //querySnapshot?
           const timeOpen = doc.get('timeOpen', {serverTimestamps: 'estimate'}).toDate();
           const jsDate = new Date(timeOpen);
           tickets.push({
