@@ -1,0 +1,66 @@
+[debug] [2023-12-26T15:33:47.163Z] ----------------------------------------------------------------------
+[debug] [2023-12-26T15:33:47.165Z] Command:       /Users/kimmykokonut/.nvm/versions/node/v20.10.0/bin/node /Users/kimmykokonut/.nvm/versions/node/v20.10.0/bin/firebase serve
+[debug] [2023-12-26T15:33:47.165Z] CLI Version:   13.0.2
+[debug] [2023-12-26T15:33:47.165Z] Platform:      darwin
+[debug] [2023-12-26T15:33:47.165Z] Node Version:  v20.10.0
+[debug] [2023-12-26T15:33:47.165Z] Time:          Tue Dec 26 2023 07:33:47 GMT-0800 (Pacific Standard Time)
+[debug] [2023-12-26T15:33:47.165Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-26T15:33:47.166Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-12-26T15:33:47.225Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-26T15:33:47.225Z] > authorizing via signed-in user (kimmykimmykokonut@gmail.com)
+[debug] [2023-12-26T15:33:47.225Z] [iam] checking project help-queue-ad86f for permissions ["firebase.projects.get"]
+[debug] [2023-12-26T15:33:47.225Z] > refreshing access token with scopes: []
+[debug] [2023-12-26T15:33:47.226Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-12-26T15:33:47.226Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-26T15:33:47.370Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-12-26T15:33:47.370Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-26T15:33:47.384Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/help-queue-ad86f:testIamPermissions [none]
+[debug] [2023-12-26T15:33:47.384Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/help-queue-ad86f:testIamPermissions x-goog-quota-user=projects/help-queue-ad86f
+[debug] [2023-12-26T15:33:47.384Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/help-queue-ad86f:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-12-26T15:33:47.444Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-12-26T15:33:47.444Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-12-26T15:33:47.550Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/help-queue-ad86f:testIamPermissions 200
+[debug] [2023-12-26T15:33:47.550Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/help-queue-ad86f:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-12-26T15:33:47.551Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/help-queue-ad86f [none]
+[debug] [2023-12-26T15:33:47.725Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/help-queue-ad86f 200
+[debug] [2023-12-26T15:33:47.726Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/help-queue-ad86f {"projectId":"help-queue-ad86f","projectNumber":"922739878780","displayName":"help-queue","name":"projects/help-queue-ad86f","resources":{"hostingSite":"help-queue-ad86f"},"state":"ACTIVE","etag":"1_4082bc8c-429d-4ef7-acc4-ab68475408f7"}
+[info] 
+[info] === Serving from '/Users/kimmykokonut/epicodus/REACT/help-queue-hooks'...
+[info] 
+[debug] [2023-12-26T15:33:47.730Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/help-queue-ad86f/sites 
+[debug] [2023-12-26T15:33:48.563Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/help-queue-ad86f/sites 200
+[debug] [2023-12-26T15:33:48.564Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/help-queue-ad86f/sites {"sites":[{"name":"projects/help-queue-ad86f/sites/help-queue-ad86f","defaultUrl":"https://help-queue-ad86f.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-12-26T15:33:48.564Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/help-queue-ad86f/webApps/-/config [none]
+[debug] [2023-12-26T15:33:48.811Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/help-queue-ad86f/webApps/-/config 200
+[debug] [2023-12-26T15:33:48.811Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/help-queue-ad86f/webApps/-/config {"projectId":"help-queue-ad86f","appId":"1:922739878780:web:b9b21d389ce2b8fbccd2f9","storageBucket":"help-queue-ad86f.appspot.com","apiKey":"AIzaSyCfydqUnNsJzta5cjDLIP0lLA99LTj_j8U","authDomain":"help-queue-ad86f.firebaseapp.com","messagingSenderId":"922739878780"}
+[debug] [2023-12-26T15:33:48.822Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/help-queue-ad86f [none]
+[debug] [2023-12-26T15:33:48.943Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/help-queue-ad86f 200
+[debug] [2023-12-26T15:33:48.944Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/help-queue-ad86f {"projectId":"help-queue-ad86f","projectNumber":"922739878780","displayName":"help-queue","name":"projects/help-queue-ad86f","resources":{"hostingSite":"help-queue-ad86f"},"state":"ACTIVE","etag":"1_4082bc8c-429d-4ef7-acc4-ab68475408f7"}
+[info] i  hosting[help-queue-ad86f]: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] ✔  hosting[help-queue-ad86f]: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[debug] [2023-12-26T15:35:55.231Z] ----------------------------------------------------------------------
+[debug] [2023-12-26T15:35:55.232Z] Command:       /Users/kimmykokonut/.nvm/versions/node/v20.10.0/bin/node /Users/kimmykokonut/.nvm/versions/node/v20.10.0/bin/firebase init
+[debug] [2023-12-26T15:35:55.232Z] CLI Version:   13.0.2
+[debug] [2023-12-26T15:35:55.232Z] Platform:      darwin
+[debug] [2023-12-26T15:35:55.233Z] Node Version:  v20.10.0
+[debug] [2023-12-26T15:35:55.233Z] Time:          Tue Dec 26 2023 07:35:55 GMT-0800 (Pacific Standard Time)
+[debug] [2023-12-26T15:35:55.233Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-26T15:35:55.269Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-26T15:35:55.269Z] > authorizing via signed-in user (kimmykimmykokonut@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/kimmykokonut/epicodus/REACT/help-queue-hooks
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
